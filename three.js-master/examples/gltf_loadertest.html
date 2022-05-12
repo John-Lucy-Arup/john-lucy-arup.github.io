@@ -50,7 +50,7 @@
 
 				scene = new THREE.Scene();
 
-				const loader = new THREE.GLTFLoader()
+				const loader = new THREE.GLTFLoader();
 
 				// make async loader
 				const loadAsync = url => {
@@ -65,12 +65,12 @@
 				Promise.all([loadAsync('/models/gltf/Horse.glb'), loadAsync('/models/gltf/ferrari.glb')]).then(models => {
 
 				  // get what you need from the models array
-				  const tokyo = models[0].scene.children[0]
-				  const drive = models[1].scene.children[0]
+				  const tokyo = models[0].scene.children[0];
+				  const drive = models[1].scene.children[0];
 
 				  // add both models to the scene
-				  scene.add(tokyo)
-				  scene.add(drive)
+				  scene.add(tokyo);
+				  scene.add(drive);
 				})
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
