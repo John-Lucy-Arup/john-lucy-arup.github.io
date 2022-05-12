@@ -33,6 +33,7 @@
 
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+			
 			//import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 
 			let camera, scene, renderer;
@@ -50,7 +51,7 @@
 
 				scene = new THREE.Scene();
 
-				const loader = new THREE.GLTFLoader();
+				const loader = new GLTFLoader();
 
 				// make async loader
 				const loadAsync = url => {
