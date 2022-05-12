@@ -1,135 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>3D Portfolio</title>
-</head>
+    <link rel="stylesheet" href="https://use.typekit.net/vcu1fze.css">
 
+
+
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <style>
+        body {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        #info {
+            font-family: gineso-condensed, sans-serif;
+            font-weight: 800;
+            font-style: normal;
+            font-size: 2rem;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display: block;
+            font-size:50
+        }
+    </style>
+</head>
 <body>
 
-    <canvas id="bg"></canvas>
-
-    <main>
-
-        <header>
-            <h1>Anirudh Panda</h1>
-            <p>🚀 Welcome to my website!</p>
-        </header>
+    <div id="info">Birmingham Commonwealth Games test copy
 
 
-        <blockquote>
-            <p>I like making stuff and putting it on the internet</p>
-        </blockquote>
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
 
-        <section>
-            <h2>📜 About Me</h2>
-            <p>
-                I am an aspiring web developer and a digital marketer who enjoys learning everyday.
-                The goal is not be better than others but your previous self.
-            </p>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module">
 
-            <p>
-                I am a MERN stack geek and specializes in SEO and overall Website analysis. I have worked with startups
-                and i
-                wish to work more for the emerging startups all around. Yeah kind of obsessed with Start-ups.
-            </p>
+        import * as THREE from 'three';
 
-            <p>
-                I like calling myself A DANCER WHO CODES and I believe in consistency and hardwork.
-                I write blogs on both <a style="text-decoration: none; color: #d4242d;"
-                    href="https://dancerwhocodes.hashnode.dev/" target="_blank" rel="noopener noreferrer">Technical</a>
-                and <a style="text-decoration: none; color: #d4242d;" href="https://marketingindetail.blogspot.com/"
-                    target="_blank" rel="noopener noreferrer">Marketing</a> domains!
-            </p>
+        // init
 
-        </section>
+        const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
+        camera.position.z = 1;
 
-        <section class="light">
-            <h2>👩🏽‍🚀 Projects</h2>
+        const scene = new THREE.Scene();
 
-            <p>
-                I have all my projects on <a style="text-decoration: none; color: #d4242d;"
-                    href="https://github.com/AnirudhPanda" target="_blank" rel="noopener noreferrer">GitHub</a>
-                Mostly I work on Web and also have a decent knowledge of Python Automation and using Selenium.
-            </p>
+        const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+        const material = new THREE.MeshNormalMaterial();
 
-            <h2>🏆 Skills</h2>
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
-            <ul>
-                <li><strong>Web Technology:</strong> HTML, CSS, JavaScript, React, NodeJS, MongoDB, Express, Bootstrap,
-                    Netlify,
-                    Travis CI, Git/GitHub</li>
-                <li><strong>Languages:</strong> C, Python, JS, Java</li>
-                <li><strong>Hosting:</strong> Netlify, GitHub Pages, AWS Amplify, Heroku</li>
-            </ul>
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setAnimationLoop(animation);
+        document.body.appendChild(renderer.domElement);
 
-            <h2>💥 RESUME</h2>
-            <a style="text-decoration: none; color: #d4242d; display: flex; justify-content: center;"
-                href="https://drive.google.com/file/d/14Ty9FtIy7R8BwIM2QZsiHoKE5FqHsBTi/view" target="_blank"
-                rel="noopener noreferrer">Resume as of March 2021</a>
+        // animation
 
-        </section>
+        function animation(time) {
 
-        <blockquote>
-            <p>You are what you believe in. You become that which you believe you can become <br>― Bhagavad Gita</p>
-        </blockquote>
+            mesh.rotation.x = time / 2000;
+            mesh.rotation.y = time / 1000;
 
-        <section class="left">
-            <h2>🌮 Work History</h2>
+            renderer.render(scene, camera);
 
-            <h3>Sinix - Student Developer</h3>
-            <p>
-                Sinix is a gaming platform primarily for HTML5 games which supports games powered by pixi.js, phaser and
-                matter.js
-                out-of-the-box. Sinix also guarantees that every game available on Sinix will playable on every
-                available
-                desktop
-                operating systems. I worked on the NodeJS part of the project and also mantained the CI/CD pipeline of
-                the
-                project.
-            </p>
-            <h3>Login Radius - Open Source Contributor</h3>
-            <p>
-                Contributed to the organization during Hacktober fest 2020.
-            </p>
-            <h3>Marketing Team Member - GIRLSCRIPT SUMMER OF CODE 2021</h3>
-            <p>
-                Working on all Social Media Handles. including LinkedIn, Discord, Instagram, Twitter
-                We got an overwhelming response with more than 6K+ applications for participants all over the country
-                this year.
-                GirlScript Summer of Code 2021 with 5500+ Shortlisted Participants, 350+ Colleges all over the world
-                including
-                35+
-                foreign universities, equal gender-wise participation.
-                Other promotion purposes.
-            </p>
-            <h3>SEO and Digital Marketing - SYLLOGISTEK SYSTEMS PRIVATE LTD.</h3>
-            <p>About Digital Assets & Preliminary Audit
-                Digital (Social) Media + Content Overview of Facebook & Linkedin
-                About Websites: Domain/Hosting
-                SEO Audit & Tools On-Page SEO
-                Understanding Key Metrics Google Search Console Google Analytics Competition Analysis & Plugins
-                SEO Heatmaps, Off-Page SEO, SEM
-                Key Terms & Metrics Introduction to Adwords</p>
-
-        </section>
-
-        <blockquote>
-            <p>Thanks for visiting!</p>
-            <br>
-            <a style="color: #d4242d; text-decoration: none;" href="http://anirudhpanda.me/" target="_blank"
-                rel="noopener noreferrer"> - Anirudh Panda</a>
-        </blockquote>
+        }
+    </script>
 
 
-    </main>
 
-    <script type="module" src="./index.js"></script>
 
+
+    <!--<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>-->
+    <!-- Use it like any other HTML element -->
+    <!--<model-viewer alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" src="https://github.com/google/model-viewer/blob/master/packages/shared-assets/models/Astronaut-Unlit.glb" ar ar-modes="webxr scene-viewer quick-look" environment-image="shared-assets/environments/moon_1k.hdr" poster="shared-assets/models/NeilArmstrong.webp" seamless-poster shadow-intensity="1" camera-controls enable-pan></model-viewer>-->
 </body>
-
 </html>
