@@ -63,14 +63,20 @@
 
 						// model
 
-						const loader = new GLTFLoader().setPath( 'models/gltf/DamagedHelmet/glTF/' );
-						loader.load( 'DamagedHelmet.gltf', function ( gltf ) {
-
-							scene.add( gltf.scene );
-
+						
+						const helmetLoader = new GLTFLoader().setPath( 'models/gltf/DamagedHelmet/glTF/' );
+						helmetLoader.load( 'DamagedHelmet.gltf', function ( gltf ) {
+							scene.add(gltf.scene);
 							render();
-
 						} );
+
+
+						const tokyoLoader = new GLTFLoader().setPath('models/gltf/');
+						tokyoLoader.load('LittlestTokyo.glb', function (gltf) {
+							scene.add(gltf.scene);
+							render();
+						});
+
 
 					} );
 
