@@ -63,7 +63,7 @@
 				}
 
 				// load both models in parallel
-				Promise.all([loadAsync('/models/gltf/Horse.glb'), loadAsync('/models/gltf/ferrari.glb')]).then(models => {
+				Promise.all([loadAsync('./models/gltf/Horse.glb'), loadAsync('./models/gltf/ferrari.glb')]).then(models => {
 
 				  // get what you need from the models array
 				  const horse = models[0].scene.children[0];
