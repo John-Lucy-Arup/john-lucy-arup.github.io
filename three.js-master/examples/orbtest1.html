@@ -108,7 +108,7 @@
         camera
     )
 
-    const intersects = raycaster.intersectObjects(sceneMeshes, false)
+	const intersects = raycaster.intersectObjects( scene.children );
 
     if (intersects.length > 0) {
         const p = intersects[0].point
