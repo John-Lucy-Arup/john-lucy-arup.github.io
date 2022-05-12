@@ -73,15 +73,10 @@
 						gltf.scene.traverse(function (child) {
 									if (child.isMesh) {
 									    const m = child
-									    sceneMeshes.push(m)
-									}
+									    sceneMeshes.push(m) }
 							
-							scene.add( gltf.scene );
-
-							render();
-
 						} );
-
+					scene.add( gltf.scene );
 					} );
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
