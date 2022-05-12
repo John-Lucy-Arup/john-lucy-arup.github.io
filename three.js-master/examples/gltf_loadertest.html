@@ -66,12 +66,12 @@
 				Promise.all([loadAsync('/models/gltf/Horse.glb'), loadAsync('/models/gltf/ferrari.glb')]).then(models => {
 
 				  // get what you need from the models array
-				  const tokyo = models[0].scene.children[0];
-				  const drive = models[1].scene.children[0];
+				  const horse = models[0].scene.children[0];
+				  const ferrari = models[1].scene.children[0];
 
 				  // add both models to the scene
-				  scene.add(tokyo);
-				  scene.add(drive);
+				  scene.add(horse);
+				  scene.add(ferrari);
 				})
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
