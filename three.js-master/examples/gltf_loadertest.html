@@ -33,7 +33,7 @@
 
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
+			//import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 
 			let camera, scene, renderer;
 
@@ -62,7 +62,7 @@
 				}
 
 				// load both models in parallel
-				Promise.all([loadAsync('/models/gltf/LittlestTokyo.glb'), loadAsync('/models/gltf/PrimarylonDrive.glb')]).then(models => {
+				Promise.all([loadAsync('/models/gltf/Horse.glb'), loadAsync('/models/gltf/ferrari.glb')]).then(models => {
 
 				  // get what you need from the models array
 				  const tokyo = models[0].scene.children[0]
