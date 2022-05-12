@@ -35,9 +35,11 @@
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
 			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
       import { TWEEN } from 'three/examples/jsm/libs/tween.module.min'
-
+			
 			let camera, scene, renderer;
-      const raycaster = new THREE.Raycaster();
+     			const raycaster = new THREE.Raycaster();
+			const mouse = new THREE.Vector2();
+			
 			init();
 			render();
 
@@ -89,13 +91,13 @@
 				controls.maxDistance = 10;
 				controls.target.set( 0, 0, - 0.2 );
 				controls.update();
-        renderer.domElement.addEventListener('dblclick', onDoubleClick, false)
+        renderer.domElement.addEventListener('click', onclick, true)
 
 				window.addEventListener( 'resize', onWindowResize );
 
 			}
 
-        function onDoubleClick(event: MouseEvent) {
+        function onclick(event) {
     raycaster.setFromCamera(
         {
             x: (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
