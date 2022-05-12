@@ -50,35 +50,28 @@
 
 				scene = new THREE.Scene();
 
-				new RGBELoader()
-					.setPath( 'textures/equirectangular/' )
-					.load( 'royal_esplanade_1k.hdr', function ( texture ) {
+				const loader = new THREE.GLTFLoader()
 
-						texture.mapping = THREE.EquirectangularReflectionMapping;
+				// make async loader
+				const loadAsync = url => {
+				  return new Promise(resolve => {
+				    loader.load(url, gltf => {
+				      resolve(gltf)
+				    })
+				  })
+				}
 
-						scene.background = texture;
-						scene.environment = texture;
+				// load both models in parallel
+				Promise.all([loadAsync('/models/gltf/LittlestTokyo.glb'), loadAsync('/models/gltf/PrimarylonDrive.glb')]).then(models => {
 
-						render();
+				  // get what you need from the models array
+				  const tokyo = models[0].scene.children[0]
+				  const drive = models[1].scene.children[0]
 
-						// model
-
-						
-// 						const helmetLoader = new GLTFLoader().setPath( 'models/gltf/DamagedHelmet/glTF/' );
-// 						helmetLoader.load( 'DamagedHelmet.gltf', function ( gltf ) {
-// 							scene.add(gltf.scene);
-// 							render();
-// 						} );
-
-
-						const tokyoLoader = new GLTFLoader().setPath('models/gltf/');
-						tokyoLoader.load('LittlestTokyo.glb', function (gltf) {
-							scene.add(gltf.scene);
-							render();
-						});
-
-
-					} );
+				  // add both models to the scene
+				  scene.add(tokyo)
+				  scene.add(drive)
+				})
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
