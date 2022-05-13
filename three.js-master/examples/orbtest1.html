@@ -37,13 +37,14 @@
 			import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 			
 			let camera, scene, renderer;
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+
 			const container = document.createElement( 'div' );
 				document.body.appendChild( container );
-			
+						
      			const raycaster = new THREE.Raycaster();
 			const mouse = new THREE.Vector2();
 			const controls = new OrbitControls( camera, renderer.domElement );
-			renderer = new THREE.WebGLRenderer( { antialias: true } );
 
 			init();
 			render();
