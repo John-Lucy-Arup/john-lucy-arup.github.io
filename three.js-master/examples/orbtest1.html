@@ -36,12 +36,8 @@
 			import { RGBELoader } from './jsm/loaders/RGBELoader.js';
 			import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 			
-			let camera, scene, renderer;
-			renderer = new THREE.WebGLRenderer( { antialias: true } );
-
-			const container = document.createElement( 'div' );
-				document.body.appendChild( container );
-						
+			let camera, scene, renderer, controls;
+		
      			const raycaster = new THREE.Raycaster();
 			const mouse = new THREE.Vector2();
 			const controls = new OrbitControls( camera, renderer.domElement );
@@ -52,6 +48,8 @@
 
 			function init() {
 
+const container = document.createElement( 'div' );
+				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
 				camera.position.set( - 1.8, 0.6, 2.7 );
@@ -81,13 +79,15 @@
 						} );
 
 					} );
-
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.toneMapping = THREE.ACESFilmicToneMapping;
 				renderer.toneMappingExposure = 1;
 				renderer.outputEncoding = THREE.sRGBEncoding;
 				container.appendChild( renderer.domElement );
+				 controls = new OrbitControls( camera, renderer.domElement );
 
 				controls.addEventListener( 'change', render ); // use if there is no animation loop
 				controls.minDistance = 2;
