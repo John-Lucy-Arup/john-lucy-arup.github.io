@@ -38,9 +38,10 @@
 			
 			let camera, scene, renderer;
      			const raycaster = new THREE.Raycaster();
-			const controls;
 			const mouse = new THREE.Vector2();
-			
+			const controls = new OrbitControls( camera, renderer.domElement );
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+
 			init();
 			render();
 
@@ -78,7 +79,6 @@
 
 					} );
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -86,7 +86,6 @@
 				renderer.outputEncoding = THREE.sRGBEncoding;
 				container.appendChild( renderer.domElement );
 
-				controls = new OrbitControls( camera, renderer.domElement );
 				controls.addEventListener( 'change', render ); // use if there is no animation loop
 				controls.minDistance = 2;
 				controls.maxDistance = 10;
