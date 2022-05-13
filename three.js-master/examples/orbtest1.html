@@ -37,6 +37,9 @@
 			import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 			
 			let camera, scene, renderer;
+			const container = document.createElement( 'div' );
+				document.body.appendChild( container );
+			
      			const raycaster = new THREE.Raycaster();
 			const mouse = new THREE.Vector2();
 			const controls = new OrbitControls( camera, renderer.domElement );
@@ -44,8 +47,7 @@
 
 			init();
 			render();
-				const container = document.createElement( 'div' );
-				document.body.appendChild( container );
+				
 
 			function init() {
 
